@@ -138,6 +138,13 @@ function init() {
 </script>
 
 <%
+  if(request.getSession().getAttribute("admin") !=null){
+     Boolean ad=(Boolean)request.getSession().getAttribute("admin");
+     if(ad){
+	 response.sendRedirect("admin.jsp");
+    }
+    }
+
   Mentor ck=(Mentor)request.getSession().getAttribute("user");
    if(ck==null){
 	  Cookie c=new Cookie("login","false");

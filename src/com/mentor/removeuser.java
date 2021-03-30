@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class updateuser
+ * Servlet implementation class removeuser
  */
-@WebServlet("/updateuser")
-public class updateuser extends HttpServlet {
+@WebServlet("/removeuser")
+public class removeuser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateuser() {
+    public removeuser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,35 +28,20 @@ public class updateuser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Mentor m=new Mentor();
-		System.out.println("hi"+request.getParameter("mentor"));
-		m.setName(request.getParameter("name"));
-		m.setemail(request.getParameter("email"));
-		m.setCompany(request.getParameter("company"));
-		m.setAbout(request.getParameter("about"));
-		m.setCategory(request.getParameter("category"));
-		m.setImage(request.getParameter("image"));
-		m.setLang(request.getParameter("language"));
-		m.setPass(request.getParameter("password"));
-		m.setSocial(request.getParameter("social"));
-		m.setProfession(request.getParameter("profession"));
-		if(request.getParameter("mentor")==null) {
-			m.setMentor("false");
-			m.setCalendly("");
-		}
-		else {
-			m.setMentor("true");
-			m.setCalendly(request.getParameter("calendly"));
-		}
-		
-		sqlMain sm=new sqlMain();
+		String email=request.getParameter("email");
+		String code=request.getParameter("code");
+		sqlMain s=new sqlMain();
 		try {
-			if(sm.updateDetails(m)) {
-				request.getSession().setAttribute("user",m);
-				 response.sendRedirect("user");
+			if(code.equals("1107")) {
+			if(s.RemoveUser(email)) {
+				response.getWriter().append("true");
 			}
 			else {
-				 response.sendRedirect("update.jsp");
+				response.getWriter().append("false");
+			}
+			}
+			else {
+				response.getWriter().append("false");
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -64,8 +49,10 @@ public class updateuser extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 	}
 
 	/**

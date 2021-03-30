@@ -34,6 +34,12 @@ public class login extends HttpServlet {
 		String user=request.getParameter("email");
 		String pass=request.getParameter("password");
 		sqlMain s=new sqlMain();
+		if(s.isAdmin(user, pass)) {
+			HttpSession session=request.getSession();
+			session.setAttribute("admin",true);
+			response.sendRedirect("admin.jsp");
+		}
+		else {
 		Mentor m=s.Validate(user, pass);
 		if(m!=null) {
 			String f=m.getName()+"";
@@ -73,9 +79,11 @@ public class login extends HttpServlet {
 			rd.forward(request, response);
 		}
 		}
+		}
 		catch(Exception e) {
 			
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

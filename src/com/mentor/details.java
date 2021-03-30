@@ -3,6 +3,7 @@ package com.mentor;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class updateuser
+ * Servlet implementation class details
  */
-@WebServlet("/updateuser")
-public class updateuser extends HttpServlet {
+@WebServlet("/details")
+public class details extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateuser() {
+    public details() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,36 +29,14 @@ public class updateuser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Mentor m=new Mentor();
-		System.out.println("hi"+request.getParameter("mentor"));
-		m.setName(request.getParameter("name"));
-		m.setemail(request.getParameter("email"));
-		m.setCompany(request.getParameter("company"));
-		m.setAbout(request.getParameter("about"));
-		m.setCategory(request.getParameter("category"));
-		m.setImage(request.getParameter("image"));
-		m.setLang(request.getParameter("language"));
-		m.setPass(request.getParameter("password"));
-		m.setSocial(request.getParameter("social"));
-		m.setProfession(request.getParameter("profession"));
-		if(request.getParameter("mentor")==null) {
-			m.setMentor("false");
-			m.setCalendly("");
-		}
-		else {
-			m.setMentor("true");
-			m.setCalendly(request.getParameter("calendly"));
-		}
-		
-		sqlMain sm=new sqlMain();
+		String user =request.getParameter("user");
+		sqlMain s=new sqlMain();
 		try {
-			if(sm.updateDetails(m)) {
-				request.getSession().setAttribute("user",m);
-				 response.sendRedirect("user");
-			}
-			else {
-				 response.sendRedirect("update.jsp");
-			}
+			Mentor m=s.GetOneUser(user);
+			RequestDispatcher rd =request.getRequestDispatcher("show.jsp");
+			System.out.println(m.getemail());
+			request.setAttribute("user", m);
+			rd.forward(request, response);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,7 +44,6 @@ public class updateuser extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**

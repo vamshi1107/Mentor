@@ -265,6 +265,17 @@
 		   
 	  } 
   }
+  function ck(){
+		console.log(document.getElementById("calen").value)
+		  if(eval(document.getElementById("calen").value))
+		  {
+			  document.getElementById("calendly").style.visibility="visible";
+		  }
+		  else{
+			  document.getElementById("calendly").style.visibility="hidden";
+			 
+		  }
+	}
 </script>
 <%@include file="header2.jsp" %>
 <% 
@@ -334,7 +345,7 @@
        <div>
          <input type="file" id="inpu" style="visibility:hidden;" onchange="run()" >
          <div id="im">
-              <p onclick="proc()" style="cursor:pointer;" id="star">Upload you photo</p>
+              <p onclick="proc()" style="cursor:pointer;" id="star">Change photo</p>
          </div>
        </div>
        <input type="text" name="image" id="imin" style="visibility:hidden;" value="<%=m.getImage()  %>">
@@ -344,7 +355,7 @@
           <% if(m.getMentor().equals("true")) { %>
              <input type="checkbox" name="mentor" onchange="calend(this)" id="calen" autocomplete="off" class="men" value="true" checked>
           <%} else{ %>
-             <input type="checkbox" name="mentor" onchange="calend(this)" id="calen" autocomplete="off" class="men" value="true">
+             <input type="checkbox" name="mentor" onchange="calend(this)" id="calen" autocomplete="off" class="men" value="false">
           <%} %>
           </div>
        </div>
@@ -382,16 +393,6 @@
 </div>
 </div>
 <script>
-function ck(){
-	  if(document.getElementById("calen").value=="true")
-	  {
-		  document.getElementById("calendly").style.visibility="visible";
-	  }
-	  else{
-		  document.getElementById("calendly").style.visibility="hidden";
-		 
-	  }
-}
 ck()
 </script>
 </body>

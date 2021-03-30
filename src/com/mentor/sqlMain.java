@@ -12,11 +12,26 @@ import com.mysql.jdbc.Statement;
 
 public class sqlMain {
 
+	Connection con;
 	
+	sqlMain(){
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			this.con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false",new Credentials().user,new Credentials().pass);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 public  ArrayList<Mentor> GetAll() throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
+	
 	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM users;");
 	while(res.next()) {
@@ -41,9 +56,7 @@ public  ArrayList<Mentor> GetAll() throws ClassNotFoundException, SQLException {
 }
 
 public  ArrayList<Mentor> GetMentor() throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
 	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM users where mentor like 'true' ;");
 	while(res.next()) {
@@ -68,9 +81,7 @@ public  ArrayList<Mentor> GetMentor() throws ClassNotFoundException, SQLExceptio
 }
 
 public  ArrayList<Mentor> GetPros() throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
 	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM users;");
 	while(res.next()) {
@@ -95,9 +106,7 @@ public  ArrayList<Mentor> GetPros() throws ClassNotFoundException, SQLException 
 }
 
 public  ArrayList<Mentor> GetStu() throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
 	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM users where mentor like 'false' ;");
 	while(res.next()) {
@@ -122,9 +131,6 @@ public  ArrayList<Mentor> GetStu() throws ClassNotFoundException, SQLException {
 }
 
 public  Mentor Validate(String email,String pass) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM users where  email like "+"'"+email+"'"+"and password like '"+pass+"'"+";");
 	Mentor m=null;
@@ -147,9 +153,7 @@ public  Mentor Validate(String email,String pass) throws ClassNotFoundException,
 	return m;
 }
 public ArrayList<Mentor>  GetOneMentor(String email) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
 	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM users where  email like "+"'"+email+"'"+"or name like '%"+email+"%' and mentor like 'true'"+";");
 	
@@ -173,8 +177,6 @@ public ArrayList<Mentor>  GetOneMentor(String email) throws ClassNotFoundExcepti
 	return list;
 }
 public int  CreateUser(Mentor m) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	PreparedStatement res=(PreparedStatement) con.prepareStatement("insert into users values(?,?,?,?,?,?,?,?,?,?,?,?)");
 	res.setString(1,m.getemail());
 	res.setString(2,m.getPass());
@@ -192,9 +194,6 @@ public int  CreateUser(Mentor m) throws ClassNotFoundException, SQLException {
 }
 
 String check(String s) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM users where  email like "+"'"+s+"'"+";");
 	int i=0;
@@ -211,9 +210,7 @@ String check(String s) throws ClassNotFoundException, SQLException {
 }
 
 public ArrayList<Mentor>  GetByCategory(String cat) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
 	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	String sql="";
 	if(cat.equals("all")) {
@@ -245,8 +242,6 @@ public ArrayList<Mentor>  GetByCategory(String cat) throws ClassNotFoundExceptio
 }
 
 int addLink(String mentor,String mentee) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("SELECT * FROM links where  mentor like "+"'"+mentor+"' and mentee like "+"'"+mentee+"' ;");
 	int k=0;
@@ -266,9 +261,7 @@ int addLink(String mentor,String mentee) throws ClassNotFoundException, SQLExcep
 }
 
 public ArrayList<Mentor>  GetLinked(String email,String what) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
 	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	String one;
 	String two;
@@ -305,10 +298,6 @@ public ArrayList<Mentor>  GetLinked(String email,String what) throws ClassNotFou
 }
 
 public Boolean  RemoveLinked(String email,String other,String what) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
-	Statement smt=(Statement) con.createStatement();
 	String one;
 	String two;
 	System.out.println();
@@ -327,9 +316,7 @@ public Boolean  RemoveLinked(String email,String other,String what) throws Class
 }
 
 public ArrayList<review>  GetReview(String email) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
 	ArrayList<review> list=new ArrayList<review>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	Statement smt=(Statement) con.createStatement();
 	ResultSet res=smt.executeQuery("select u.name,u.email,r2.review,u.mentor from users u inner join review r2 on u.email like r2.user and r2.mentor like "+"'"+email+"' ;");
 	
@@ -341,8 +328,6 @@ public ArrayList<review>  GetReview(String email) throws ClassNotFoundException,
 }
 
 public int  setReview(sreview r) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	PreparedStatement res=(PreparedStatement) con.prepareStatement("insert into review values(?,?,?)");
 	res.setString(1,r.getMentor());
 	res.setString(2,r.getUser());
@@ -352,9 +337,6 @@ public int  setReview(sreview r) throws ClassNotFoundException, SQLException {
 }
 
 Boolean updatepass(String email,String pass) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	PreparedStatement ps=(PreparedStatement) con.prepareStatement("update users set password=? where email like ? ");
 	ps.setString(1, pass);
 	ps.setString(2, email);
@@ -369,9 +351,6 @@ Boolean updatepass(String email,String pass) throws ClassNotFoundException, SQLE
 }
 
 Boolean updateDetails(Mentor m) throws ClassNotFoundException, SQLException {
-	Class.forName("com.mysql.jdbc.Driver");
-	ArrayList<Mentor> list=new ArrayList<Mentor>();
-	Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Mentor?autoReconnect=true&useSSL=false","root","Avk1234.");
 	PreparedStatement ps=(PreparedStatement) con
 			.prepareStatement("update users set password=?,name=?,profession=?,company=?,category=?,social=?,lang=?,image=?,about=?,mentor=?,calendy=? where email like ? ");
 	ps.setString(1, m.getPass());
@@ -386,6 +365,102 @@ Boolean updateDetails(Mentor m) throws ClassNotFoundException, SQLException {
 	ps.setString(10, m.getMentor());
 	ps.setString(11, m.getCalendly());
 	ps.setString(12, m.getemail());
+	int i=ps.executeUpdate();
+	if(i>0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+	
+}
+
+Boolean isAdmin(String email,String pass) throws ClassNotFoundException, SQLException {
+	Statement s=(Statement) con.createStatement();
+	String sql="select * from admin where email like '"+email+"' and password like '"+pass+"'";
+	ResultSet rs=s.executeQuery(sql);
+	int i=0;
+	while(rs.next()) {
+		i++;
+	}
+	if(i>0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+	
+}
+
+Boolean addAdmin(String email,String pass) throws ClassNotFoundException, SQLException {
+	PreparedStatement ps=(PreparedStatement) con
+			.prepareStatement("insert into admin values (?,?) ");
+	ps.setString(1, email);
+	ps.setString(2, pass);
+	int i=ps.executeUpdate();
+	if(i>0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+	
+}
+public Mentor GetOneUser(String email) throws ClassNotFoundException, SQLException {
+	Statement smt=(Statement) con.createStatement();
+	ResultSet res=smt.executeQuery("SELECT * FROM users where  email like "+"'"+email+"'");
+	Mentor m=new Mentor();
+	while(res.next()) {
+		m.setemail(res.getString(1));
+		m.setPass(res.getString(2));
+		m.setName(res.getString(3));
+		m.setProfession(res.getString(4));
+		m.setCompany(res.getString(5));
+		m.setCategory(res.getString(6));
+		m.setSocial(res.getString(7));
+		m.setLang(res.getString(8));
+		m.setImage(res.getString(9));
+		m.setAbout(res.getString(10));
+		m.setMentor(res.getString(11));
+		m.setCalendly(res.getString(12));
+	}
+	con.close();
+	return m;
+}
+
+public Boolean  RemoveUser(String email) throws ClassNotFoundException, SQLException {
+	String sql=" delete from users where email like '"+email+"'";
+	PreparedStatement ps=(PreparedStatement) con.prepareStatement(sql);
+	sql=" delete from links where mentor like '"+email+"' or mentee like '"+email+"'";
+	PreparedStatement p2=(PreparedStatement) con.prepareStatement(sql);
+	sql=" delete from review where mentor like '"+email+"' or user like '"+email+"'";
+	PreparedStatement p3=(PreparedStatement) con.prepareStatement(sql);
+	
+	ps.execute();
+	p2.execute();
+	p3.execute();
+	
+	return true;
+}
+public  ArrayList<category> GetCat() throws ClassNotFoundException, SQLException {
+	
+	ArrayList<category> list=new ArrayList<category>();
+	Statement smt=(Statement) con.createStatement();
+	ResultSet res=smt.executeQuery("SELECT * FROM category;");
+	while(res.next()) {
+		list.add(new category(res.getString(1),res.getString(2)));
+	}
+	con.close();
+	return list;
+
+}
+
+Boolean addCat(String name,String url) throws ClassNotFoundException, SQLException {
+	ArrayList<Mentor> list=new ArrayList<Mentor>();
+	PreparedStatement ps=(PreparedStatement) con
+			.prepareStatement("insert into category values (?,?) ");
+	ps.setString(1, name);
+	ps.setString(2, url);
 	int i=ps.executeUpdate();
 	if(i>0) {
 		return true;

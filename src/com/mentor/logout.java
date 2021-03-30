@@ -37,8 +37,9 @@ public class logout extends HttpServlet {
 				session.setAttribute("name",null);
 				session.setAttribute("user",null);
 				session.setAttribute("login",false);
-					k.setValue("false");
-					response.addCookie(k);
+				session.setAttribute("admin",false);
+				k.setValue("false");
+				response.addCookie(k);
 			}
 		}
 		response.sendRedirect("page.jsp");

@@ -27,4 +27,16 @@ public class topMentors {
 			map.put("about",i.about);
 		return map;
 	}
+
+	public ArrayList<Mentor> getSt() {
+		ArrayList<Mentor> al=null;
+		sqlMain s=new sqlMain();
+		try {
+			al=s.GetStu();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return al;
+	}
 }
