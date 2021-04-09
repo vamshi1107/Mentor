@@ -456,7 +456,6 @@ public  ArrayList<category> GetCat() throws ClassNotFoundException, SQLException
 }
 
 Boolean addCat(String name,String url) throws ClassNotFoundException, SQLException {
-	ArrayList<Mentor> list=new ArrayList<Mentor>();
 	PreparedStatement ps=(PreparedStatement) con
 			.prepareStatement("insert into category values (?,?) ");
 	ps.setString(1, name);

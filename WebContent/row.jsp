@@ -79,14 +79,17 @@
    scroll-behavior: smooth;
    padding-left:0px;
  }
-  #wel{
-    text-align:center;
-   font-size: 30px;
+
+ .wel{
+    text-align:left;
+   font-size: 26px;
     font-weight: 600;
     width: 100%;
     line-height: 1.2;
     margin-bottom: 16px;
    font-family: 'sui-semi-bold';
+   margin-top:10px;
+   margin-bottom:10px;
    
  }
  .con::-webkit-scrollbar{
@@ -106,6 +109,7 @@
     align-items:center;
     padding-left:10px; 
     padding-right:10px; 
+    flex-wrap:wrap;
   }
   .item > div{
     text-align:center;
@@ -118,7 +122,6 @@
   .item:hover{
     background-color:#fafafa;
   }
-  
   .rk{
     display:flex;
     flex-direction:row;
@@ -128,6 +131,22 @@
     margin-right:30px;
     font-size:20px;
     cursor:pointer;
+  }
+  .wcon{
+   width:90%;
+   margin-left:auto;
+   margin-right:auto;
+   margin-bottom:20px;
+   margin-top:20px;
+   border:1px solid black;
+   border-radius:20px;
+   padding-left:10px;
+   padding-right:10px;
+   display:flex;
+   justify-content:center;
+   flex-direction:column;
+   align-items:center;
+   padding-bottom:10px;
   }
 </style>
 <script>
@@ -166,8 +185,8 @@ ArrayList<Mentor> students=new ArrayList<Mentor>();
 students=t.getSt();
 
 %>
-
-<div id="wel">Mentors</div>
+<div class="wcon">
+<div class="wel">Mentors</div>
 <div class="con">
   <%
   for(Mentor i : mentors) {
@@ -192,7 +211,9 @@ students=t.getSt();
   }
   %>
 </div>
-<div id="wel">Students</div>
+</div>
+<div class="wcon">
+<div class="wel">Students</div>
 <div class="con">
   <%
   for(Mentor i : students) {
@@ -216,5 +237,6 @@ students=t.getSt();
   <%
   }
   %>
+</div>
 </div>
 </div>
