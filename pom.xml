@@ -38,6 +38,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<configuration>
+                        <processTypes>
+                           <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+                       </processTypes>
                    <source>1.8</source>
                    <target>1.8</target>
                 </configuration>
@@ -66,9 +69,6 @@
   <version>2.6</version>
   <configuration>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <processTypes>
-     <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
-  </processTypes>
   </configuration>
 </plugin>
     </plugins>
