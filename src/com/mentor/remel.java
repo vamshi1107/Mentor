@@ -36,7 +36,10 @@ public class remel extends HttpServlet {
 		try {
 			Boolean b=s.RemoveLinked(our, other, what);
 			response.getWriter().append(String.valueOf(b));
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

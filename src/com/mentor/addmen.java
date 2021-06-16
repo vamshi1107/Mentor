@@ -35,7 +35,10 @@ public class addmen extends HttpServlet {
 			else {
 				response.getWriter().append("false");
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -36,7 +36,10 @@ public class topMentors {
 		sqlMain s=new sqlMain();
 		try {
 			al=s.GetStu();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch ( SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

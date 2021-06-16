@@ -32,7 +32,10 @@ public class validate extends HttpServlet {
 		 try {
 			response.getWriter().append(s.check(request.getParameter("email")));
 			
-		} catch (ClassNotFoundException | IOException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

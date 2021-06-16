@@ -32,7 +32,10 @@ public class mentors extends HttpServlet {
 		ArrayList<Mentor> a=null;
 		 try {
 			a=s.GetByCategory(request.getParameter("cat"));
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
