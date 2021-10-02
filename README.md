@@ -1,70 +1,27 @@
-Abstract     :-
+#Online Mentoring System 
 
-              Mentoring  is  a  conventional  method  of transferring knowledge and ideas from confirmed  professional
-  in  an  society  to  an  inexperienced member  in  the  sector.  Education  sector  has  found mentoring as quite
-  effective tool since long back and with the advent of new technologies, comes an idea of online  mentoring,  which  
-  is  also  referred  to  as  e-mentoring.  Instead of  face-to-face  meetings,  Online Mentoring  System  (OMS)  uses  
-  asynchronous ,electronic  communications to  establish  and support the relationship between mentor and the student 
-  using virtual  mode.  E-Mentoring  uses  computerized medium to transfer knowledge and skills from teacher to student. 
-  It basically focuses on student and faculty relationship.  Online  Mentoring  System  is  a  Client Server  model,  
-  which  acts  as  an  Interface  between Teacher and Student. OMS strives to reduce the work load of students  
-  in entering  their details  and at the same time enable the Mentors to assess their students more  efficiently.  
-  E-Mentoring  is  fundamentally developed to improve the performance of students by assisting  mentors  to  
-  understand  the  problems  of students  more  effectively  and  easily.  In  order  to achieve this, 
-  a review system  is also  included.
+## HOME
 
-INTRODUCTION :-
+![image](https://user-images.githubusercontent.com/69498031/135714379-0993be61-100f-4c61-8c80-78fd1738fcbe.png)
+
+![image](https://user-images.githubusercontent.com/69498031/135714392-c1760a6a-a8d4-4ac1-961d-26a619b59cbc.png)
+
+## MENTOR PROFILE
+
+![image](https://user-images.githubusercontent.com/69498031/135714435-ef4cda86-d233-4931-ac91-9afcfed2e0f8.png)
  
-             To  Development  and  securing  of  excellence  human resources under both the internal and external
-  environmental changes are  a key  deciding factor  of the national competitiveness.  However,  due  to  the  
-  poor  vocational  training    or career guidance services in college. The colleges have not  been  playing  
-  its  role  in  the  transition  to  the  professional  world  for  their  students,  who consequently cannot 
-  meet  the demand from industry. Currently,  most  of  colleges  provide  students  with relevant  information and
-  vocational  guidance  via systems  such  as  an  on/off-line  career    information office  or  consultation  center,
-  and  an  internship. However,  since  a  systematic  connection  between individual students is  not made, its effect 
-  is utterly  limited.  Vocational  training  or  career  guidance service  in  the  college  is  poor,  And  thus  colleges  
-  cannot play its right  role in  the transition  of college students  to the  professionals  stage after  graduation. 
-  Therefore,  it  is  considered  that  college  graduates generally cannot meets the demand from Industry. 
+![image](https://user-images.githubusercontent.com/69498031/135714444-d7c3188e-8e24-48fb-8d2d-22ce6684cfb0.png)
+
+## SCHEDULING MEETING 
+
+![image](https://user-images.githubusercontent.com/69498031/135714482-dfcf3717-4a5b-48c8-b038-eb2e2f92f9f2.png)
+
+## USER PROFILE
+
+ ![image](https://user-images.githubusercontent.com/69498031/135714537-2238d675-1cb6-4717-9f6b-4e57b6ec62d0.png)
+
+ ![image](https://user-images.githubusercontent.com/69498031/135714607-69a1d294-31d7-470e-ae1f-70a600b8ae6f.png)
+
+ ## LOGIN
  
-Objective    :-
-
-              Online Mentoring System Project is web-based application   developed in java programming language.
-   The main aim of project is to develop a platform where people can interact with mentors of different categories . 
-   It can be implement in any organization or college.
-
-
---------------------------------------------------------------------------
-System used and Specifications:
-
-HARDWARE:
-
-RAM           : 8 GB 
-Processer   : Intel i5
-OS                : Windows 
-
-SOFTWARE:
-
-Database          :   MYSQL
-IDE Tool            :  Eclipse IDE
-Technologies    :  Servlets,  JSP,  JavaScript ,Boot strap,  HTML5,  CSS
-----------------------------------------------------------------------------
-Modules
-
-Primary Actor	
-User	        Sign in
-                Registration
-                Login
-                Modify Details
-                Add mentor
-                Schedule meeting
-                Add review
-
-Admin	       Login
-               Manage users
-               Add categories
-
-Mentor	       Sign in
-               Registration
-               Login
-               Mange mentees
-                                                
+ ![image](https://user-images.githubusercontent.com/69498031/135714634-4f077519-76d1-4e70-bb25-e8c850c1e4cb.png)
